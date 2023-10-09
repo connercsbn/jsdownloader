@@ -151,9 +151,9 @@ func download(urlStr string) error {
 
 func main() {
 		flag.Usage = func() {
-			fmt.Fprintf(os.Stderr, "Usage: %s <url> [options]\n", os.Args[0])
+			fmt.Fprintf(os.Stderr, "Usage: %s [options] <url>\n\n", os.Args[0])
 			fmt.Fprintf(os.Stderr, "Options:\n")
-			flag.PrintDefaults()
+			fmt.Fprintf(os.Stderr, "--download            Download all files\n\n")
 		}
 
 		downloadFlag := flag.Bool("download", false, "Download all files")
