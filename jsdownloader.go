@@ -13,15 +13,6 @@ import (
 	"slices"
 )
 
-func exists(url string, all_urls []string) bool {
-    for _, v := range all_urls {
-        if v == url {
-            return true
-        }
-    }
-    return false
-}
-
 func format_match(full string, rel string) string {
     u, err1 := url.Parse(full)
     r, err2 := url.Parse(rel)
@@ -84,7 +75,7 @@ func get_all_js_urls(all_urls []string, previous_fresh_urls []string) []string {
     for _, url := range previous_fresh_urls {
         newUrls := get_js_urls(url)
         for _, url := range newUrls {
-            if len(url) > 0 && !exists(url, all_urls) {
+            if len(url) > 0 && !slices.Contains(all_urls, url) {
                 next_fresh_urls = append(next_fresh_urls, url)
                 all_urls = append(all_urls, url)
             }
